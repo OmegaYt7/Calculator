@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор линейной и векторной алгебры</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Калькулятор линейной и векторной алгебры</h1>
+      <p class="subtitle">Матрицы · Векторы · СЛАУ</p>
+    </header>
+
+    <!-- Вкладки -->
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="matrices">Матрицы</button>
+      <button class="tab-btn" data-tab="vectors">Векторы</button>
+      <button class="tab-btn" data-tab="slae">СЛАУ</button>
+    </nav>
+
+    <!-- ============ МАТРИЦЫ ============ -->
+    <section id="matrices" class="tab-content active">
+      <h2>Операции с матрицами</h2>
+
+      <div class="size-controls">
+        <label>Размер матрицы A:
+          <input type="number" id="rowsA" min="1" max="8" value="2"> ×
+          <input type="number" id="colsA" min="1" max="8" value="2">
+        </label>
+        <label>Размер матрицы B:
+          <input type="number" id="rowsB" min="1" max="8" value="2"> ×
+          <input type="number" id="colsB" min="1" max="8" value="2">
+        </label>
+        <button id="btnCreateMatrices" class="btn primary">Создать поля</button>
+      </div>
+
+      <div class="matrices-input">
+        <div class="matrix-block">
+          <h3>Матрица A</h3>
+          <div id="matrixA" class="matrix-grid"></div>
+        </div>
+        <div class="matrix-block">
+          <h3>Матрица B</h3>
+          <div id="matrixB" class="matrix-grid"></div>
+        </div>
+      </div>
+
+      <div class="scalar-input">
+        <label>Число k = <input type="number" id="scalarK" value="2" step="any"></label>
+      </div>
+
+      <div class="operations">
+        <button class="btn op" data-op="add">A + B</button>
+        <button class="btn op" data-op="sub">A − B</button>
+        <button class="btn op" data-op="mulScalar">k · A</button>
+        <button class="btn op" data-op="mul">A × B</button>
+        <button class="btn op" data-op="transpose">Aᵀ</button>
+        <button class="btn op" data-op="det">det(A)</button>
+        <button class="btn op" data-op="rank">rank(A)</button>
+        <button class="btn op" data-op="inverse">A⁻¹</button>
+      </div>
+    </section>
+
+    <!-- ============ ВЕКТОРЫ ============ -->
+    <section id="vectors" class="tab-content">
+      <h2>Операции с векторами</h2>
+
+      <div class="size-controls">
+        <label>Размерность:
+          <select id="vectorDim">
+            <option value="2">2D</option>
+            <option value="3" selected>3D</option>
+          </select>
+        </label>
+        <button id="btnCreateVectors" class="btn primary">Создать поля</button>
+      </div>
+
+      <div class="vectors-input">
+        <div class="vector-block">
+          <h3>Вектор a</h3>
+          <div id="vectorA" class="vector-grid"></div>
+        </div>
+        <div class="vector-block">
+          <h3>Вектор b</h3>
+          <div id="vectorB" class="vector-grid"></div>
+        </div>
+        <div class="vector-block">
+          <h3>Вектор c</h3>
+          <div id="vectorC" class="vector-grid"></div>
+        </div>
+      </div>
+
+      <div class="scalar-input">
+        <label>Число k = <input type="number" id="vectorScalar" value="2" step="any"></label>
+      </div>
+
+      <div class="operations">
+        <button class="btn op" data-op="v-add">a + b</button>
+        <button class="btn op" data-op="v-sub">a − b</button>
+        <button class="btn op" data-op="v-mulScalar">k · a</button>
+        <button class="btn op" data-op="dot">a · b</button>
+        <button class="btn op" data-op="cross">[a, b]</button>
+        <button class="btn op" data-op="mixed"> (a, b, c)</button>
+        <button class="btn op" data-op="length">|a|</button>
+      </div>
+    </section>
+
+    <!-- ============ СЛАУ ============ -->
+    <section id="slae" class="tab-content">
+      <h2>Решение систем линейных алгебраических уравнений</h2>
+
+      <div class="size-controls">
+        <label>Порядок системы n =
+          <input type="number" id="slaeN" min="2" max="6" value="3">
+        </label>
+        <button id="btnCreateSlae" class="btn primary">Создать систему</button>
+      </div>
+
+      <div class="slae-input">
+        <h3>Коэффициенты и свободные члены</h3>
+        <div id="slaeMatrix" class="matrix-grid"></div>
+      </div>
+
+      <div class="operations">
+        <button class="btn op" data-op="gauss">Метод Гаусса</button>
+        <button class="btn op" data-op="cramer">Метод Крамера</button>
+        <button class="btn op" data-op="matrixMethod">Матричный метод</button>
+      </div>
+    </section>
+
+    <!-- Общий блок результатов -->
+    <section class="results">
+      <h2>Промежуточные действия и результат</h2>
+      <div id="steps" class="steps"></div>
+      <div id="result" class="result"></div>
+      <div id="error" class="error"></div>
+    </section>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/math-helpers.js"></script>
+  <script src="js/matrix.js"></script>
+  <script src="js/vector.js"></script>
+  <script src="js/slae.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
